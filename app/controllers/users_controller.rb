@@ -24,6 +24,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @current_user.update(user_params)
+      flash[:success] = 'ユーザー情報を変更しました'
+      redirect_to root_url
+    else
+      flash[:danger] = 'ユーザー情報が変更できませんでした'
+      render :edit
+    end
   end
   
   private

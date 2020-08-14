@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="offset-sm-3 col-sm-6">
-    <%= form_with(url: login_path, local: true) do |f| %>
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
     <div class=form-group>
       <%= f.label :email, 'メールアドレス' %>
       <%= f.email_field :email, class: 'form-control' %>
