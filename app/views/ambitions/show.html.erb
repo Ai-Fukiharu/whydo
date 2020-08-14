@@ -1,0 +1,26 @@
+<div class="text-center mb-5">
+  <h2>OKR詳細</h2>
+</div>
+
+<div class="row border-bottom mb-4">
+  <h4 class="col-8">Objective</h4>
+  <div class="col-2">
+    <%= link_to '編集', edit_ambition_path, class: 'd-inline-block' %>
+  </div>
+  <div class="col-2">
+    <%= link_to '削除', ambition_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'd-inline-block' %>
+  </div>
+</div>
+
+<li>Objective</li>
+<div class="mb-3">
+  <%= @ambition.content %>
+</div>
+<li>期間（開始日 〜 終了日）</li>
+<div class="mb-3">
+  <%= @ambition.start_date %>
+  〜
+  <%= @ambition.end_date %>
+</div>
+
+

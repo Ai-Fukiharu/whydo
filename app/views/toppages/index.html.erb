@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<%= render 'after_login' %>
+<%= render 'after_login', ambitions: @ambitions %>
 <% else %>
 <%= render 'before_login' %>
 <% end %>

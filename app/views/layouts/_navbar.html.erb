@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="NavItemContent">
     <ul class="navbar-nav">
       <% if logged_in? %>
-      <li class="nav-item">OKR新規作成</li>
-      <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to 'OKR新規作成', new_ambition_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to current_user.name.to_s + '’sページ', user_path(current_user), class: "nav-link" %></li>
       <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %></li>
       <% else %>
       <li class="nav-item"><%= link_to '新規登録', signup_path, class: "nav-link" %></li>

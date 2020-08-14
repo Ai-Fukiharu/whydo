@@ -13,11 +13,11 @@
     </div>
     <div class=text-center>
       <% if @user == current_user %>
-      <%= link_to 'ユーザー情報編集', edit_user_path(current_user), class: "border-bottom" %>
+      <%= link_to 'ユーザー情報編集', edit_user_path(current_user), class: "text-dark border-bottom" %>
       <% end %>
     </div>
   </aside>
   <div class="col-sm-8">
-    
+    <%= render 'ambitions/ambitions', ambitions: @ambitions %>
   </div>
 </div>

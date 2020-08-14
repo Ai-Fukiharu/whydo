@@ -1,3 +1,29 @@
 <div class=text-center>
   <h3><%= current_user.name %>のOKRページ</h3>
 </div>
+
+<% ambitions.each do |ambition| %>
+<div class="row justify-content-around mb-2">
+  <div class="col-4">
+    <div class="border">
+      <p>期間</p>
+      <p class=text-center>
+        <%= ambition.start_date %>
+        〜
+        <%= ambition.end_date %>
+      </p>
+    </div>
+  </div>
+  <div class="col-7 card">
+    <div class="text-center card-header">
+      Objective
+    </div>
+    <div class="text-center card-body">
+      <%= link_to ambition.content, ambition_path(ambition), class: 'text-dark border-bottom' %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<%= paginate ambitions %>

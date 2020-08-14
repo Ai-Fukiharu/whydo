@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit ,:update]
   
   def show
+    @ambitions = current_user.ambitions.order(end_date: :desc).page(params[:page]).per(5)
     @user = User.find(params[:id])
     unless @user == current_user
       flash[:danger] = '権限がありません'
