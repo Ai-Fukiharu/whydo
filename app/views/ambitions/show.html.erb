@@ -1,10 +1,9 @@
-<div class="text-center mb-5">
+<div class="text-center pb-4 mb-3 border-bottom">
   <h2>OKR詳細</h2>
 </div>
 
-<div class="text-center">
-  Objective詳細
-</div>
+
+Objective詳細
 
 <div>
   <%= @ambition.content %>
@@ -42,23 +41,19 @@
   </tr>
 </table>
 
-<div class="text-center">
-  Key Result詳細
-</div>
+
+Key Result詳細
 <% @ambition.key_results.each do |key_result| %>
-<div class="mb-5">
+<div>
   <div>
     <%= key_result.content %>
   </div>
   <div class="row border-bottom justify-content-end mb-2">
     <div class="col-2">
-      <%= link_to '評価', edit_key_result_path(key_result), class: 'd-inline-block' %>
+      <%= link_to '評価', "/key_results/#{key_result.id}/daily_results/new", class: 'd-inline-block' %>
     </div>
     <div class="col-2">
       <%= link_to '編集', edit_key_result_path(key_result), class: 'd-inline-block' %>
-    </div>
-    <div class="col-2">
-      <%= link_to '削除', key_result_path(key_result), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'd-inline-block' %>
     </div>
   </div>
   
@@ -83,7 +78,16 @@
     </tr>
   </table>
 </div>
+
+<div class="pb-4">
+  評価履歴
+  <%= render '/daily_results/index', key_result: key_result %>
+</div>
 <% end %>
 
-<%= link_to 'Key_Resultを追加', "/ambitions/#{@ambition.id}/key_results/new", class: "btn btn-primary btn-lg" %>
+<div class="row justify-content-center mb-5">
+  <div class="col-4">
+   <%= link_to 'Key_Resultを追加', "/ambitions/#{@ambition.id}/key_results/new", class: "btn btn-primary btn-block" %>
+  </div>
+</div>
 

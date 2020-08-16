@@ -1,3 +1,7 @@
+<div class="text-center pb-4 mb-3 border-bottom">
+  <h2>ユーザー詳細</h2>
+</div>
+
 <div class="row">
   <aside class="col-sm-4">
     <div class="card">
@@ -18,6 +22,10 @@
     </div>
   </aside>
   <div class="col-sm-8">
-    <%= render 'ambitions/ambitions', ambitions: @ambitions %>
+    <p>
+      <%= @user.name %>のObjective一覧
+      <span class="badge badge-secondary"><%= @count_ambitions %></span>
+    </p>
+    <%= render 'ambitions/index', ambitions: @ambitions %>
   </div>
 </div>

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   
   get '/ambitions/:id/key_results/new', to: 'key_results#new'
   resources :key_results, only:[:create, :edit, :update, :destroy]
-
+  
+  get '/key_results/:id/daily_results/new', to: 'daily_results#new'
+  resources :daily_results, only:[:create, :edit, :update, :destroy]
 end

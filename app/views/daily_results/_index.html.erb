@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <tr>
+    <td>日付</td>
+    <td>評価</td>
+    <td>リンク</td>
+  </tr>
+  <% key_result.daily_results.each do |daily_result| %>
+  <tr>
+    <td>
+      <%= daily_result.result_date %>
+    </td>
+    <td>
+      <%= daily_result.result %>
+    </td>
+    <td>
+      <%= link_to '編集', edit_daily_result_path(daily_result) %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -35,7 +35,7 @@ class KeyResultsController < ApplicationController
   def destroy
     @key_result.destroy
     flash[:success] = 'Key Resultを削除しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to @ambition
   end
   
   private

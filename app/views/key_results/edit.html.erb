@@ -3,5 +3,7 @@
 </div>
 
 <div>
-  <%= render 'key_result_form', ambition: @ambition, key_result: @key_result %>
+  <%= render 'form', ambition: @ambition, key_result: @key_result %>
 </div>
+
+<%= link_to '削除', key_result_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>

@@ -20,12 +20,15 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
     
-    <% if logged_in? %>
-    <%= f.submit '保存', class: "btn btn-primary btn-block" %>
-    <% else %>
-    <%= f.submit '登録', class: "btn btn-primary btn-block" %>
-    <% end %>
-    
+    <div class="row justify-content-center mb-5">
+      <div class="col-4">
+        <% if logged_in? %>
+          <%= f.submit '保存', class: "btn btn-primary btn-block" %>
+        <% else %>
+          <%= f.submit '登録', class: "btn btn-primary btn-block" %>
+        <% end %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

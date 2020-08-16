@@ -1,0 +1,15 @@
+
+<% ambitions.each do |ambition| %>
+<div class="card mb-3">
+  <div class="card">
+    <div class="text-center card-header font-weight-bold">
+      <%= link_to ambition.content, ambition_path(ambition), class: 'text-dark border-bottom' %>
+    </div>
+    <div class="text-center card-body">
+      <%= ambition.start_date %> 〜 <%= ambition.end_date %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= paginate ambitions %>

@@ -1,0 +1,10 @@
+<div class="text-center pb-4 mb-3 border-bottom">
+  <h2>Key Result評価履歴編集</h2>
+</div>
+<%= @ambition.content %>
+<%= @key_result.content %>
+<div>
+  <%= render 'form', ambition: @ambition, key_result: @key_result, daily_result: @daily_result %>
+</div>
+
+<%= link_to '削除', daily_result_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>

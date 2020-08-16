@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       flash[:danger] = '権限がありません'
       redirect_to root_url
     end
+    counts(@user)
   end
 
   def new
