@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   resources :ambitions, only:[:show, :new, :create, :edit, :update, :destroy]
+  
+  get '/ambitions/:id/key_results/new', to: 'key_results#new'
+  resources :key_results, only:[:create, :edit, :update, :destroy]
 
 end

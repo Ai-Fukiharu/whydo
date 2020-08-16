@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_102743) do
+ActiveRecord::Schema.define(version: 2020_08_14_172247) do
 
   create_table "ambitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2020_08_14_102743) do
     t.index ["user_id"], name: "index_ambitions_on_user_id"
   end
 
+  create_table "key_results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.integer "numerical_goal"
+    t.bigint "ambition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ambition_id"], name: "index_key_results_on_ambition_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -31,4 +40,5 @@ ActiveRecord::Schema.define(version: 2020_08_14_102743) do
   end
 
   add_foreign_key "ambitions", "users"
+  add_foreign_key "key_results", "ambitions"
 end

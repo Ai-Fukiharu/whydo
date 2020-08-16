@@ -1,0 +1,30 @@
+<%= form_with(model: key_result, local: true) do |f| %>
+<%= hidden_field_tag :ambition_id, ambition.id %>
+<%= render 'layouts/error_messages', model: f.object %>
+<div class="row">
+  <div class="col-sm-4">
+    <p>Objective</p>
+  </div>
+  <div class="col-sm-8">
+    <%= ambition.content %>
+  </div>
+  <div class="col-sm-4">
+    <p>Key_Result</p>
+  </div>
+  <div class="col-sm-8 form-group">
+    <%= f.text_area :content, class: 'form-control', rows: 6 %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <p>目標数値</p>
+    <p>（半角数値）</p>
+  </div>
+  <div class="col-sm-8 form-group">
+    <%= f.number_field :numerical_goal, class: 'form-control' %>
+  </div>
+</div>
+<div class="text-center">
+<%= f.submit '保存', class: 'btn btn-primary btn-lg' %>
+</div>
+<% end %>

@@ -2,8 +2,14 @@
   <h2>OKR詳細</h2>
 </div>
 
-<div class="row border-bottom mb-4">
-  <h4 class="col-8">Objective</h4>
+<div class="text-center">
+  Objective詳細
+</div>
+
+<div>
+  <%= @ambition.content %>
+</div>
+<div class="row border-bottom justify-content-end mb-2">
   <div class="col-2">
     <%= link_to '編集', edit_ambition_path, class: 'd-inline-block' %>
   </div>
@@ -12,15 +18,72 @@
   </div>
 </div>
 
-<li>Objective</li>
-<div class="mb-3">
-  <%= @ambition.content %>
-</div>
-<li>期間（開始日 〜 終了日）</li>
-<div class="mb-3">
-  <%= @ambition.start_date %>
-  〜
-  <%= @ambition.end_date %>
-</div>
+<table class="table mb-5">
+  <tr>
+    <td>
+      開始日
+    </td>
+    <td>
+    </td>
+    <td>
+      終了日
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @ambition.start_date %>
+    </td>
+    <td>
+      〜
+    </td>
+    <td>
+      <%= @ambition.end_date %>
+    </td>
+  </tr>
+</table>
 
+<div class="text-center">
+  Key Result詳細
+</div>
+<% @ambition.key_results.each do |key_result| %>
+<div class="mb-5">
+  <div>
+    <%= key_result.content %>
+  </div>
+  <div class="row border-bottom justify-content-end mb-2">
+    <div class="col-2">
+      <%= link_to '評価', edit_key_result_path(key_result), class: 'd-inline-block' %>
+    </div>
+    <div class="col-2">
+      <%= link_to '編集', edit_key_result_path(key_result), class: 'd-inline-block' %>
+    </div>
+    <div class="col-2">
+      <%= link_to '削除', key_result_path(key_result), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'd-inline-block' %>
+    </div>
+  </div>
+  
+  <table class="table">
+    <tr>
+      <td>
+        目標数値
+      </td>
+      <td>
+        達成数値
+      </td>
+      <td>
+        達成率
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= key_result.numerical_goal %>
+      </td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+<%= link_to 'Key_Resultを追加', "/ambitions/#{@ambition.id}/key_results/new", class: "btn btn-primary btn-lg" %>
 

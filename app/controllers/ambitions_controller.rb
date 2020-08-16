@@ -34,6 +34,7 @@ class AmbitionsController < ApplicationController
   end
 
   def destroy
+    
     @ambition.destroy
     flash[:success] = 'Objectiveを削除しました'
     redirect_to user_path(current_user)
