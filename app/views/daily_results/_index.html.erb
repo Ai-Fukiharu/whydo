@@ -4,7 +4,7 @@
     <td>評価</td>
     <td>リンク</td>
   </tr>
-  <% key_result.daily_results.each do |daily_result| %>
+  <% key_result.daily_results.order(result_date: :desc).each do |daily_result| %>
   <tr>
     <td>
       <%= daily_result.result_date %>

@@ -1,10 +1,17 @@
-<div class="text-center pb-4 mb-3 border-bottom">
-  <h2>Key Result評価履歴編集</h2>
+<div class="row pb-4 mb-3 border-bottom">
+  <div class="col-sm-2">
+    <%= link_to '戻る', ambition_path(@daily_result.key_result.ambition) %>
+  </div>
+  <div class="col-sm-8 text-center">
+    <h2>Key Result評価履歴編集・削除</h2>
+  </div>
+  <div class="col-sm-2 text-center">
+    <%= link_to '削除', daily_result_path, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  </div>
 </div>
+
 <%= @ambition.content %>
 <%= @key_result.content %>
 <div>
   <%= render 'form', ambition: @ambition, key_result: @key_result, daily_result: @daily_result %>
 </div>
-
-<%= link_to '削除', daily_result_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>

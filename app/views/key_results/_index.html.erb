@@ -1,0 +1,52 @@
+<% ambition.key_results.each do |key_result| %>
+<div>
+  <div>
+    ・Key Result内容
+  </div>
+  <div>
+    <%= key_result.content %>
+  </div>
+  <div class="row border-bottom justify-content-end mb-2">
+    <div class="col-2">
+      <%= link_to '評価', "/key_results/#{key_result.id}/daily_results/new", class: 'd-inline-block' %>
+    </div>
+    <div class="col-2">
+      <%= link_to '編集', edit_key_result_path(key_result), class: 'd-inline-block' %>
+    </div>
+  </div>
+  
+  <table class="table">
+    <tr>
+      <td>
+        目標数値
+      </td>
+      <td>
+        達成数値
+      </td>
+      <td>
+        達成率
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= key_result.numerical_goal %>
+      </td>
+      <td>
+        <% unless key_result.daily_results.first == nil %>
+        <%= key_result.daily_results.order(result_date: :desc).first.result %>
+        <% end %>
+      </td>
+      <td>
+        <% unless key_result.daily_results.first == nil %>
+        <%= key_result.daily_results.order(result_date: :desc).first.result * 100 / key_result.numerical_goal %> %
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="pb-4">
+  評価履歴
+  <%= render '/daily_results/index', key_result: key_result %>
+</div>
+<% end %>
