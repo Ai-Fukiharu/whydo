@@ -5,6 +5,12 @@ class DailyResultsController < ApplicationController
   def new
     @key_result = KeyResult.find(params[:id])
     @ambition = @key_result.ambition
+    
+    unless current_user.id == @ambition.user_id
+      flash[:danger] = "権限がありません"
+      redirect_to root_url
+    end
+    
     @daily_result = @key_result.daily_results.build
   end
 

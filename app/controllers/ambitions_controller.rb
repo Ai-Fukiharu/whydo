@@ -13,7 +13,7 @@ class AmbitionsController < ApplicationController
     @ambition = current_user.ambitions.build(ambition_params)
     if @ambition.save
       flash[:success] = 'Objective作成に成功しました　一つ目のKRを作成しましょう'
-      redirect_to root_url
+      redirect_to "/ambitions/#{@ambition.id}/key_results/new"
     else
       flash[:danger] = 'Objective作成に失敗しました'
       render :new
