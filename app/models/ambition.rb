@@ -12,7 +12,7 @@ class Ambition < ApplicationRecord
   
   def start_date_before_end_date
     if start_date >= end_date
-      errors.add(:date, "終了日より開始日の日付を早くしてください")
+      errors.add(:message, "終了日より開始日の日付を早くしてください")
     end
   end
 end

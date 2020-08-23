@@ -1,16 +1,7 @@
 <%= form_with(model: daily_result, local: true) do |f| %>
 <%= hidden_field_tag :key_result_id, daily_result.key_result.id %>
+<%= hidden_field_tag :result_date, daily_result.result_date %>
 <%= render 'layouts/error_messages', model: f.object %>
-
-<div class="row">
-  <div class="col-sm-5">
-    <p>評価日時</p>
-  </div>
-  <div class="form-group col-sm-7">
-    <%= f.date_select :result_date, use_month_numbers: true, start_year:Time.now.year-1, end_year:Time.now.year+10 %>
-  </div>
-  
-</div>
 
 
 <div class="row">

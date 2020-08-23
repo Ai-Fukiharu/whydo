@@ -18,11 +18,18 @@ class DailyResultsController < ApplicationController
     @key_result = KeyResult.find(params[:key_result_id])
     @ambition = @key_result.ambition
     @daily_result = @key_result.daily_results.build(daily_result_params)
-    if @daily_result.save
-      flash[:success] = '本日の評価に成功しました'
+    
+    if @key_result.numerical_goal < @daily_result.result
+      flash[:danger] = '評価値は目標数値より大きくしないでください'
+      render :new
+    elsif @ambition.start_date > @daily_result.result_date || @ambition.end_date <@daily_result.result_date
+      flash[:danger] = '評価はObjectiveの期間内に行ってください'
+      render :new
+    elsif @daily_result.save
+      flash[:success] = '評価の保存に成功しました'
       redirect_to @ambition
     else
-      flash[:danger] = '本日の評価に失敗しました'
+      flash[:danger] = '評価の保存に失敗しました'
       render :new
     end
   end
@@ -31,11 +38,16 @@ class DailyResultsController < ApplicationController
   end
 
   def update
-    if @daily_result.update(daily_result_params)
+    @result = params[:daily_result][:result].to_i
+    
+    if @key_result.numerical_goal < @result
+      flash[:danger] = '評価値は目標数値より大きくしないでください'
+      render :edit
+    elsif @daily_result.update(daily_result_params)
       flash[:success] = '評価の変更に成功しました'
       redirect_to @ambition
     else
-       flash[:danger] = '評価の変更に失敗しました'
+      flash[:danger] = '評価の変更に失敗しました'
       render :edit
     end
   end
